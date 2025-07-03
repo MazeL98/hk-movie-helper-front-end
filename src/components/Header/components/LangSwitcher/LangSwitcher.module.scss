@@ -1,0 +1,21 @@
+
+
+.text-button {
+    position: fixed;
+    right: 3%;
+    bottom: 10%;
+    height: 56px;
+    width: 56px;
+    line-height: 56px;
+    text-align: center;
+    border: 0;
+    font-size: 20px;
+    font-weight: 500;
+
+    background-color: $highlight-color;
+
+    &:hover {
+        border: 0;
+        background-color:$highlight-color !important;
+    }
+}

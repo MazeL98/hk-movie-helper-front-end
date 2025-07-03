@@ -1,0 +1,39 @@
+.date-filter-wrapper {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    .date-filter-label svg {
+        width: 24px;
+        height: 24px;
+        fill: #a4a4a4;
+    }
+}
+
+.date-filter {
+    width: 45%;
+    height: 44px;
+    font-size:18px;
+
+
+    input {
+        font-size: 18px !important;
+        font-weight: 500;
+    }
+    
+
+    :global(.ant-picker-range-separator ){
+      padding: 0 14px;
+    }
+
+        @media screen and (max-width: 1180px) {
+        width: 60%;
+    }
+
+        @media screen and (max-width: 685px) {
+        width: 80%;
+    }
+}

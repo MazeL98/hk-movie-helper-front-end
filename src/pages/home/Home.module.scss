@@ -1,0 +1,53 @@
+.container {
+    width: 100%;
+}
+
+.tabs {
+    height: 64px;
+    position:sticky;
+    top: 48px;
+    left: 0;
+    display: flex;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    justify-content: center;
+    gap: 36px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    z-index:99;
+}
+
+.tab-item {
+    height: 100%;
+    width: 210px;
+
+    :global(.ant-card-body) {
+        height: 100%;
+        padding: 0 24px !important;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .label {
+            font-size: 26px;
+            font-weight: 500;
+        }
+    }
+}
+
+.tab-active {
+    background-color: #edcf5d;
+}
+
+.tab-content {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+
+    padding-top: 14px;
+
+    & > .row {
+        height: 100%;
+    }
+}

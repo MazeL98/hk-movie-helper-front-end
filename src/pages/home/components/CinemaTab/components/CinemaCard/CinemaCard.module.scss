@@ -1,0 +1,71 @@
+$card-width: 180px;
+
+.cinema-card-item {
+    width: 100%;
+
+    & :global {
+        .ant-card-body {
+            display: flex;
+        }
+    }
+
+    .cinema-logo-bg {
+        height: 75px;
+        width: 75px;
+        background-color: $background-color;
+    }
+
+    .address-icon {
+        width: 14px;
+        height: 14px;
+        fill: $text-color-secondary;
+    }
+
+    .card-body {
+        padding: 12px 12px;
+        width: calc(100% - 75px);
+        .card-title {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.2;
+            word-break: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: wrap;
+        }
+        .card-subtitle {
+            font-size: 14px;
+            color: $text-color-secondary;
+            line-height: 1.5;
+            white-space: wrap;
+            margin-top: 4px;
+        }
+    }
+
+    .show-schedule {
+        width: 100px;
+        cursor: pointer;
+        align-self: center;
+        justify-self: flex-end;
+        display: flex;
+        align-items: center;
+        gap:4px;
+        span {
+            font-size: 12px;
+            visibility: hidden;
+
+        }
+    }
+
+    .show-schedule-icon {
+        width: 28px;
+        height: 28px;
+        fill: $text-color-default;
+    }
+
+    &:hover {
+        span {
+            visibility: visible;
+        }
+    }
+}

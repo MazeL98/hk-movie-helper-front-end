@@ -1,0 +1,80 @@
+$button-bg-color: #1c1c1c;
+$button-text-color: #fafaff;
+
+.M-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    padding: 0 16px;
+    border-radius: 0; // 还原Card组件的样式
+    background-color: #fefeff;
+    z-index: 9999;
+}
+
+.header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: $layout-header-height;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-left .title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-left .ant-image {
+    width: 46px;
+    height: 46px;
+    background-color: lightcyan;
+    border-radius: 50%;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap:2px;
+
+    .right-menu {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .svg-button {
+      padding: 0 4px;
+      border: 0;
+      background-color: unset;
+      box-shadow: none;
+        &:hover {
+            border: 0;
+            background-color: unset;
+        }
+        &:active {
+            border: 0;
+            background-color: unset;
+        }
+        :global(.anticon) {
+            width: 19px;
+            height: 19px;
+            fill: #010101;
+            color: #010101;
+        }
+
+        :global(.anticon:hover){
+                      fill: #a4a4a4;
+            color: #a4a4a4;
+          
+        }
+    }
+}

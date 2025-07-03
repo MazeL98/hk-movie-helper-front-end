@@ -1,0 +1,32 @@
+$layout-header-height: 48px;
+
+
+// === Font/Text Colors (Light Theme) ===
+$text-color-default: #010101;
+$text-color-secondary: #a4a4a4;
+$highlight-color: #edcf5d;
+$background-color: #f2f0ea;
+
+// $text-color-inverse: $color-white;
+// $text-color-inverse-muted: $color-gray-100;
+
+// $text-color-link: $color-blue-600;
+// $text-color-link-hover: $color-blue-700;
+
+// $text-color-success: $color-green-500;
+// $text-color-warning: $color-yellow-500;
+// $text-color-error: $color-red-500;
+// $text-color-info: $color-blue-500;
+
+// $text-color-disabled: $color-gray-300;
+// $text-color-placeholder: $color-gray-300;
+
+
+$card-width: 180px;
+$column-gap: 32px;
+
+$card-list-xxl-width: $card-width * 6 + $column-gap * 5;
+$card-list-xl-width: $card-width * 5 + $column-gap * 4;
+$card-list-lg-width: $card-width * 4 + $column-gap * 3;
+$card-list-md-width: $card-width * 3 + $column-gap * 2;
+$card-list-sm-width: $card-width * 2 + $column-gap * 1;

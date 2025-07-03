@@ -1,0 +1,41 @@
+.current-button {
+    background-color: black !important;
+    color: white !important;
+}
+
+.date-scroller {
+    margin: 8px 0 16px;
+    
+    overscroll-behavior: contain;
+
+    :global  {
+        & ::-webkit-scrollbar {
+            background-color: $background-color;
+            display:none;
+        }
+
+    }
+}
+
+.left-arrow,
+.right-arrow {
+    align-self: center;
+    width: 28px !important;
+    height: 64px;
+    border: none;
+  background: none ;
+
+    &:hover{
+      border:none;
+       background: none !important;
+    }
+
+    &:active{
+      border:none;
+             background: none !important;
+    }
+
+   &:not(:disabled):focus-visible {
+    outline:none !important;
+   }
+}

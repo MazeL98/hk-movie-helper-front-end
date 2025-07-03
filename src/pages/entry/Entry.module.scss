@@ -1,0 +1,27 @@
+.layout {
+
+    height: 100%;
+    width: 100%;
+}
+
+
+.main-container {
+    // position:relative;
+    box-sizing: border-box;
+
+    max-width: 90rem;
+    margin: 0 auto;
+    padding-top: calc($layout-header-height + 4px);
+
+
+    @media screen and (max-width: 1500px) {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
