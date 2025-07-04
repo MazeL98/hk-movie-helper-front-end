@@ -11,8 +11,8 @@
 export function debounce(fn:any, delay = 300, immediate = false) {
   let timer:any = null;
 
-  return function debounced(...args) {
-    const context = this;
+  return function debounced(this:any,...args:any) {
+    const context = this ;
 
     if (timer) clearTimeout(timer);
 
