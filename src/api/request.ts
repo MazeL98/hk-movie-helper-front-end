@@ -3,8 +3,9 @@ import type {InternalAxiosRequestConfig } from 'axios'
 import QS from 'qs';
 import {message} from 'antd'
 import { globalRouters } from '@/router';
+const baseURL = import.meta.env.VITE_BASE_URL;
 const request = axios.create({
-  baseURL: '/api', 
+  baseURL,
   timeout: 10000,
 });
 
