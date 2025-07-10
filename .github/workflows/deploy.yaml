@@ -2,7 +2,6 @@ name: Frontend CI/CD
 
 on:
   push:
-    branches: [ master,  ]
     tags:
       - 'v*.*.*' # 监听语义化版本号，如 v1.0.0
       
@@ -99,6 +98,7 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
           cd /home/deploy
+          chmod +x deploy.sh
           if [ "${{ github.ref }}" = "refs/heads/master" ]; then
             ./deploy.sh prod
           else
