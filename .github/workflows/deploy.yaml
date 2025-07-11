@@ -85,7 +85,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           source: ".env.remote"
-          target: "/home/deploy"
+          target: "/home/deploy/frontend"
 
   deploy:
     needs: build-and-push-docker
@@ -99,6 +99,6 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
-          cd /home/deploy
+          cd /home/deploy/frontend
           chmod +x deploy.sh
             ./deploy.sh prod
