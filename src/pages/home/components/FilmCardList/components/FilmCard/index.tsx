@@ -60,7 +60,7 @@ const currentDateRange = useContext(DateRangeContext)
 
     const getPoster = () =>{
       if(data.poster_url_internal) {
-        return "http://cnpl-assets.mazel98.com/" +  data.poster_url_internal
+        return   data.poster_url_internal
       }
       return "/src/assets/default-movie.png"
     }

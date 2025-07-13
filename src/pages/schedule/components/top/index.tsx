@@ -45,7 +45,7 @@ const Top = ({info,type}:ScheduleTopProps) => {
 
         const getPoster = () =>{
       if('poster_url_internal' in info && info.poster_url_internal) {
-        return "http://cnpl-assets.mazel98.com/" +  info.poster_url_internal
+        return info.poster_url_internal
       }
       return "/src/assets/default-movie.png"
     }
