@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./FilmCard.module.scss";
 
-import { ShowScheduleOutlined, DouBanFilled } from "@/components/ExtraIcons";
+import { ShowScheduleOutlined, DouBanFilled,DirectorOutlined} from "@/components/ExtraIcons";
 import { useLang } from "@/contexts/LanguageContext";
 import {DateRangeContext} from "../../../DateTab/index"
 import { FilmCardItem } from "@/types/film";
@@ -36,8 +36,8 @@ const currentDateRange = useContext(DateRangeContext)
     data.attrs = [
         {
             attrs_key: "导演",
-            attrs_value: data.director_en,
-            attrs_icon: null,
+            attrs_value: data.director_en.length ? data.director_en : '暂无导演',
+            attrs_icon: <DirectorOutlined className={styles.attrIcon} />,
         },
         {
             attrs_key: "豆瓣评分",
@@ -74,7 +74,7 @@ const currentDateRange = useContext(DateRangeContext)
                         <span className={styles.label} key={attr.attrs_key}>
                             {attr.attrs_icon}
                             {attr.attrs_value}
-                            {data.attrs && index < data.attrs.length - 1  ?  <span> / </span> : ''}
+                            {data.attrs && index < data.attrs.length - 1  ?  <span style={{paddingRight: 4,paddingLeft:4}}>/</span> : ''}
                         </span>
                     ))}
                 </div>

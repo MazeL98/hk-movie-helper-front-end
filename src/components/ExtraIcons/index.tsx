@@ -43,6 +43,10 @@ const SearchSvg = () => (
   <svg  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="13120" ><path d="M768 448a362.666667 362.666667 0 1 0-725.333333 0 362.666667 362.666667 0 0 0 725.333333 0z m-640 0a277.333333 277.333333 0 1 1 554.666667 0 277.333333 277.333333 0 0 1-554.666667 0z m739.925333 525.568l-194.304-196.949333 60.757334-59.904 194.304 196.949333-60.757334 59.904z"  p-id="13121"></path></svg>
 )
 
+const DirectorSvg = () => (
+<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="21588"  ><path d="M512 298.666667m-213.333333 0a213.333333 213.333333 0 1 0 426.666666 0 213.333333 213.333333 0 1 0-426.666666 0Z" fill="#9F9F9F" p-id="21589"></path><path d="M128 810.666667v42.666666a85.333333 85.333333 0 0 0 85.333333 85.333334h597.333334a85.333333 85.333333 0 0 0 85.333333-85.333334v-42.666666a213.333333 213.333333 0 0 0-213.333333-213.333334H341.333333a213.333333 213.333333 0 0 0-213.333333 213.333334z"p-id="21590"></path></svg>
+)
+
 export const CalenderOutlined = (props:any) => <Icon component={CalendarSvg} {...props} />
 export const HomeOutlined = (props:any) => <Icon component={HomeSvg} {...props} />
 // export const AddOutlined = (props:any) => <Icon component={AddSvg} {...props} />
@@ -53,3 +57,4 @@ export const AddressOutlined = (props:any) => <Icon component={AddressSvg}  {...
 export const TimeOutlined = (props:any) => <Icon component={TimeSvg}  {...props} ></Icon>
 export const AddFilled = (props:any) => <Icon component={AddSvg}  {...props} ></Icon>
 export const SearchOutlined = (props:any) => <Icon component={SearchSvg}  {...props} ></Icon>
+export const DirectorOutlined = (props:any) => <Icon component={DirectorSvg}  {...props} ></Icon>
