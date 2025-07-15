@@ -4,7 +4,7 @@
 
 .tabs {
     height: 64px;
-    position:sticky;
+    position: sticky;
     top: 48px;
     left: 0;
     display: flex;
@@ -15,7 +15,11 @@
     width: 100%;
     margin: 0 auto;
     background-color: #fff;
-    z-index:99;
+    z-index: 99;
+
+    @media screen and (max-width: 685px) {
+        height: 48px;
+    }
 }
 
 .tab-item {
@@ -34,6 +38,15 @@
             font-weight: 500;
         }
     }
+
+    @media screen and (max-width: 685px) {
+        :global(.ant-card-body) {
+            .label {
+                font-size: 20px;
+                font-weight: 500;
+            }
+        }
+    }
 }
 
 .tab-active {
@@ -44,10 +57,14 @@
     display: flex;
     gap: 16px;
     width: 100%;
-
     padding-top: 14px;
 
     & > .row {
         height: 100%;
+    }
+
+    @media screen and (max-width: 685px) { 
+    padding-left: 1px;
+
     }
 }

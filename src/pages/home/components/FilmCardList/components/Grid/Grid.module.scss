@@ -1,0 +1,34 @@
+
+.film-card-list-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.film-card-list {
+    width: $card-list-xxl-width;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    column-gap: $column-gap;
+    row-gap: $column-gap * 0.8;
+padding-bottom:24px;
+    @media screen and (max-width: 1400px) {
+        width: $card-list-xl-width;
+    }
+
+    @media screen and (max-width: 1180px) {
+        width: $card-list-lg-width;
+    }
+
+    @media screen and (max-width: 960px) {
+        width: $card-list-md-width;
+    }
+
+    @media screen and (max-width: 685px) {
+        width: $card-list-sm-width;
+    }
+
+}

@@ -47,7 +47,7 @@ $card-list-sm-width: $card-width * 2 + $column-gap * 1;
 }
 
 .search-input {
-    width: 35%;
+    width: max(35%,504px);
     height: 44px;
     font-size: 18px;
     font-weight: 600;
@@ -68,5 +68,13 @@ $card-list-sm-width: $card-width * 2 + $column-gap * 1;
       height: 20px;
       fill: $text-color-secondary;
     };
+    }
+
+        @media screen and (max-width: 1400px) {
+         width: 55%;
+    }
+
+        @media screen and (max-width: 1180px) {
+        width: 75%;
     }
 }

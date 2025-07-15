@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:prod":"tsc -b && vite build --mode production",
+    "build:prod": "tsc -b && vite build --mode production",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -20,6 +20,7 @@
     "react-big-calendar": "^1.18.0",
     "react-dom": "^18.3.1",
     "react-horizontal-scrolling-menu": "^7.1.1",
+    "react-responsive": "^10.0.1",
     "react-router-dom": "^7.1.1"
   },
   "devDependencies": {
