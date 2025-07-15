@@ -3,15 +3,14 @@ $button-text-color: #ffffff;
 $card-width: 180px;
 
 .film-card-item {
-    
     width: 100%;
-    margin-bottom:16px;
-  :global(.ant-card-body){
-    display: flex;
-    position:relative;
-  }
+    margin-bottom: 16px;
+    :global(.ant-card-body) {
+        display: flex;
+        position: relative;
+    }
     .poster {
-      width: 120px;
+        width: 120px;
     }
 
     .card-body {
@@ -49,16 +48,21 @@ $card-width: 180px;
     }
 
     .show-schedule-button {
-          position:absolute;
-          right: 16px;
-          bottom:16px;
-          gap:4px;
-  
-      height: auto;
-      padding: 6px 10px;
-      border: none;
-      background-color: $highlight-color;
-      color: $text-color-default;
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
+        gap: 4px;
+
+        height: auto;
+        padding: 6px 10px;
+        border: none;
+        background-color: $highlight-color;
+        color: $text-color-default;
+
+        &:hover{
+          background: $highlight-color !important;
+          filter:opacity(0.8)
+        }
     }
 
     .show-schedule-icon {
@@ -66,6 +70,6 @@ $card-width: 180px;
         height: 18px;
         fill: $text-color-default;
         margin-top: 1px;
-    }
 
+    }
 }
