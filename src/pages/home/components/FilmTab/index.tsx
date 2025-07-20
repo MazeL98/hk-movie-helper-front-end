@@ -1,4 +1,11 @@
-import { useEffect, useState, useMemo, useCallback, useRef,createContext } from "react";
+import {
+    useEffect,
+    useState,
+    useMemo,
+    useCallback,
+    useRef,
+    createContext,
+} from "react";
 import { Input, Divider } from "antd";
 
 import FilmCardList from "../FilmCardList";
@@ -18,14 +25,13 @@ import { FilmCardItem } from "@/types/film";
 
 import styles from "./FilmTab.module.scss";
 
-
-
 const FilmTab = () => {
     // 滚动加载数据
-    const { loading:reqLoading, err, run } = useRequest<
-        PaginatedResult<FilmCardItem>,
-        [FilmListReq]
-    >(getFilmList);
+    const {
+        loading: reqLoading,
+        err,
+        run,
+    } = useRequest<PaginatedResult<FilmCardItem>, [FilmListReq]>(getFilmList);
     const [data, setData] = useState<FilmCardItem[]>([]);
     const [pagination, setPagination] = useState({
         pageNo: 1,
@@ -36,7 +42,6 @@ const FilmTab = () => {
     const [hasMore, setHasMore] = useState(true);
 
     //共享loading状态
-
 
     const fetchData = async (
         pageNo: number,
@@ -106,7 +111,7 @@ const FilmTab = () => {
         }
     };
 
-    if (err) {
+    if (err || (!reqLoading &&(!data || !data.length))) {
         return <NoResult />;
     }
 
@@ -125,18 +130,20 @@ const FilmTab = () => {
                 />
             </div>
             <LoadingContext.Provider value={reqLoading}>
-              <FilmCardList data={data}></FilmCardList>
+                <FilmCardList data={data}></FilmCardList>
             </LoadingContext.Provider>
-            {hasMore ? (
-                <Loading />
-            ) : (
-                <Divider
-                    plain
-                    style={{ color: "#a4a4a4", margin: "16px 0 44px" }}
-                >
-                    End
-                </Divider>
-            )}
+            <div>
+                {hasMore ? (
+                    <Loading />
+                ) : (
+                    <Divider
+                        plain
+                        style={{ color: "#a4a4a4", margin: "16px 0 44px" }}
+                    >
+                        End
+                    </Divider>
+                )}
+            </div>
         </div>
     );
 };

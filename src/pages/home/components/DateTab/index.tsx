@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, createContext } from "react";
+import { Divider } from "antd";
 import DateFilter from "./components/DateFilter";
 import NoResult from "@/components/StatusPages/NoResult";
 import FilmCardList from "../FilmCardList";
@@ -62,7 +63,7 @@ const DateTab = () => {
         fetchData();
     }, [dateStrings]);
 
-    if (err) {
+    if (err || (!loading &&(!data || !data.length))) {
         return <NoResult />;
     }
     return (
@@ -73,6 +74,12 @@ const DateTab = () => {
                   <FilmCardList data={data}></FilmCardList>
                 </LoadingContext.Provider>
             </DateRangeContext.Provider>
+                                <Divider
+                        plain
+                        style={{ color: "#a4a4a4", margin: "16px 0 44px" }}
+                    >
+                        End
+                    </Divider>
         </div>
     );
 };
