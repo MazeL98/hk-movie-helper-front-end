@@ -13,6 +13,15 @@ $card-width: 180px;
         height: 75px;
         width: 75px;
         background-color: $background-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .default-cinema-logo{
+              width: 44px;
+        height: 44px;
+        fill: $text-color-secondary;
     }
 
     .address-icon {

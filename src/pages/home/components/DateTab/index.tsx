@@ -4,6 +4,8 @@ import NoResult from "@/components/StatusPages/NoResult";
 import FilmCardList from "../FilmCardList";
 
 import useRequest from "@/utils/useRequest";
+import { LoadingContext } from "@/contexts/LoadingContext";
+
 import styles from "./DateTab.module.scss";
 import { getFilmsByScheduleDateRange } from "@/api/modules/film";
 import { FilmCardItem } from "@/types/film";
@@ -29,7 +31,7 @@ const DateTab = () => {
     const [dateStrings, setDateStrings] = useState<string[]>(initDateRange);
 
     const [data, setData] = useState<FilmCardItem[]>([]);
-    const { err, run } = useRequest<
+    const { loading,err, run } = useRequest<
         FilmCardItem[],
         [{ startDate: string; endDate: string }]
     >(getFilmsByScheduleDateRange);
@@ -67,7 +69,9 @@ const DateTab = () => {
         <div className={styles.dateTabWrapper}>
             <DateFilter change={handleDateQuery} defaultValue={dateStrings}/>
             <DateRangeContext.Provider value={dateStrings}>
-                <FilmCardList data={data}></FilmCardList>
+                <LoadingContext.Provider value={loading}>
+                  <FilmCardList data={data}></FilmCardList>
+                </LoadingContext.Provider>
             </DateRangeContext.Provider>
         </div>
     );

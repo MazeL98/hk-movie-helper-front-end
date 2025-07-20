@@ -7,6 +7,7 @@ export interface FilmCardItem {
     director_hk: string;
     director_simplified: string;
     rating_douban: number | null;
+    rating_imdb: number | null;
     poster_url_internal?:string;
 }
 

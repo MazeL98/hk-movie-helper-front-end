@@ -1,4 +1,4 @@
-import FilmCard from "..//FilmCard";
+import GridCard from "../GridCard";
 
 import styles from "./Grid.module.scss";
 import { FilmCardItem } from "@/types/film";
@@ -13,7 +13,7 @@ const Grid = ({ data }: CardListProps) => {
         <div className={styles.filmCardListWrapper}>
             <div className={styles.filmCardList}>
                 {data.map((card) => (
-                    <FilmCard key={card.id} data={card} />
+                    <GridCard key={card.id} data={card} />
                 ))}
             </div>
         </div>

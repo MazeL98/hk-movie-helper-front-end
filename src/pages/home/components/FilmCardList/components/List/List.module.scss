@@ -4,4 +4,10 @@
     width: 100%;
     height: auto;
     padding-bottom: 24px;
+
+    :global {
+      .ant-skeleton.ant-skeleton-element {
+        width: 100% !important;
+      }
+    }
 }

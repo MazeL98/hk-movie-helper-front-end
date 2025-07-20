@@ -1,9 +1,11 @@
-import { Card, Space } from "antd";
+import { Card } from "antd";
 import { useNavigate } from "react-router-dom";
 import {
     ShowScheduleOutlined,
     AddressOutlined,
+    CinemaFilled
 } from "../../../../../../components/ExtraIcons";
+
 import { CinemaItem } from "@/types/cinema";
 import styles from "./CinemaCard.module.scss";
 
@@ -22,7 +24,9 @@ const CinemaCard = ({ data }: CinemaCardProps) => {
     };
     return (
         <Card hoverable  className={styles.cinemaCardItem} bordered={false} onClick={toDetail}>
-            <div className={styles.cinemaLogoBg}></div>
+            <div className={styles.cinemaLogoBg}>
+              <CinemaFilled className={styles.defaultCinemaLogo} />
+            </div>
             <div className={styles.cardBody}>
                 <div className={styles.cardTitle}>{data.name_hk}</div>
                 <div className={styles.cardSubtitle}>

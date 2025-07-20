@@ -1,7 +1,7 @@
-import { Card, Image,Button } from "antd";
+import { Card, Image,Button,Skeleton } from "antd";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./ListItem.module.scss";
+import styles from "./ListCard.module.scss";
 
 import {
     ShowScheduleOutlined,
@@ -9,6 +9,7 @@ import {
     DirectorOutlined,
 } from "@/components/ExtraIcons";
 import { useLang } from "@/contexts/LanguageContext";
+import { useLoading } from "@/contexts/LoadingContext";
 import { DateRangeContext } from "../../../DateTab/index";
 import { FilmCardItem } from "@/types/film";
 
@@ -22,9 +23,11 @@ interface FilmCardData extends FilmCardItem {
 interface FilmCardProps {
     data: FilmCardData;
 }
-const FilmCard = ({ data }: FilmCardProps) => {
+const ListCard = ({ data }: FilmCardProps) => {
     const navigate = useNavigate();
     const currentDateRange = useContext(DateRangeContext);
+  const loading = useLoading();
+
     const toDetail = () => {
         const queries: any = { filmId: data.id };
         if (currentDateRange && currentDateRange.length) {
@@ -69,6 +72,8 @@ const FilmCard = ({ data }: FilmCardProps) => {
         return "/src/assets/default-movie.png";
     };
     return (
+            loading ?  <Skeleton.Input active style={{height: 120,width:'100%',margin:'8px 0' }}  />:
+
         <Card  className={styles.filmCardItem} bordered={false}>
             <Image src={getPoster()} preview={false} className={styles.poster}></Image>
             <div className={styles.cardBody}>
@@ -90,4 +95,4 @@ const FilmCard = ({ data }: FilmCardProps) => {
     );
 };
 
-export default FilmCard;
+export default ListCard;
