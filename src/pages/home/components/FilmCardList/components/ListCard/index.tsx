@@ -2,7 +2,7 @@ import { Card, Image,Button,Skeleton } from "antd";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ListCard.module.scss";
-
+import defaultMoviePoster from "@/assets/default-movie.png"
 import {
     ShowScheduleOutlined,
     DouBanFilled,
@@ -69,7 +69,7 @@ const ListCard = ({ data }: FilmCardProps) => {
         if (data.poster_url_internal) {
             return data.poster_url_internal;
         }
-        return "/src/assets/default-movie.png";
+        return defaultMoviePoster;
     };
     return (
             loading ?  <Skeleton.Input active style={{height: 120,width:'100%',margin:'8px 0' }}  />:

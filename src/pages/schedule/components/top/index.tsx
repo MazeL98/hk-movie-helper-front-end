@@ -1,6 +1,5 @@
 import { Image } from "antd";
-import NoResult from "@/components/StatusPages/NoResult";
-
+import defaultMoviePoster from "@/assets/default-movie.png"
 import styles from "./Top.module.scss";
 import { FilmItem } from "@/types/film";
 import { CinemaItem } from "@/types/cinema";
@@ -47,7 +46,7 @@ const Top = ({info,type}:ScheduleTopProps) => {
       if('poster_url_internal' in info && info.poster_url_internal) {
         return info.poster_url_internal
       }
-      return "/src/assets/default-movie.png"
+      return defaultMoviePoster
     }
     return (
         <div className={styles.topContainer}>

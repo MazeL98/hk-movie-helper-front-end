@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./GridCard.module.scss";
-
+import defaultMoviePoster from "@/assets/default-movie.png"
 import {
     ShowScheduleOutlined,
     DouBanFilled,
@@ -83,7 +83,7 @@ const GridCard = ({ data }: FilmCardProps) => {
         if (data.poster_url_internal) {
             return data.poster_url_internal;
         }
-        return "/src/assets/default-movie.png";
+        return defaultMoviePoster;
     };
 
     return (
