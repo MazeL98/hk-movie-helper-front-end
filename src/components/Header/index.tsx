@@ -22,7 +22,7 @@ const Header = () => {
             <div className={styles.headerWrapper}>
                 <div className={styles.headerLeft}>
                     <Image>Logo</Image>
-                    <div className={styles.title}>Cineplan</div>
+                    <div className={styles.title}>HK-Movie-Helper</div>
 
                 </div>
                 <div className={styles.headerRight}>
