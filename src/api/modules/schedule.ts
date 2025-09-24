@@ -21,21 +21,21 @@ export interface ScheduleByFilm extends FilmItem {
 export type ScheduleListRes = ScheduleByFilm| ScheduleByCinema;
 
 export interface ScheduleListReq {
-    filmId?: number;
+    filmID?: number;
     date?: string;
-    cinemaId?: number;
+    cinemaID?: number;
 }
 
 // 定义函数重载
 // 获取某个电影院拍片
 export function getScheduleList(params: {
-    cinemaId: number;
+    cinemaID: number;
     date: string;
 }): Promise<ScheduleByCinema>;
 
 // 获取某个电影的拍片
 export function getScheduleList(params: {
-    filmId: number;
+    filmID: number;
     date: string;
 }): Promise<ScheduleByFilm>;
 
@@ -45,8 +45,8 @@ export function getScheduleList(params: any): Promise<ScheduleListRes> {
 
 
 export interface ValidDatesReq {
-  filmId?:number;
-  cinemaId?:number;
+  filmID?:number;
+  cinemaID?:number;
   startDate?:string;
   endDate?:string;
 }

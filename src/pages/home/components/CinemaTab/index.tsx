@@ -20,8 +20,8 @@ const CinemaTab = () => {
     const [pageNo, setPageNo] = useState(1);
     const [pageSize] = useState(24);
     const [hasMore, setHasMore] = useState(true);
-    const [districtId, setDistrict] = useState<number | null>(null);
-    const [theaterId, setTheater] = useState<number | null>(null);
+    const [districtID, setDistrict] = useState<number | null>(null);
+    const [theaterID, setTheater] = useState<number | null>(null);
 
     // 滚动加载
     const loadMore = () => {
@@ -33,7 +33,7 @@ const CinemaTab = () => {
 
     // 筛选查询
     const handleQuery = (field: "theater" | "district", value: number | null) => {
-        const isRepeatClick = (field === 'theater' && value === theaterId) || (field === 'district' && value === districtId)
+        const isRepeatClick = (field === 'theater' && value === theaterID) || (field === 'district' && value === districtID)
         if(isRepeatClick) return;
         if (field === "theater") {
             setTheater(value);
@@ -48,8 +48,8 @@ const CinemaTab = () => {
     useEffect(() => {
         const fetchData = async () => {
             const params: CinemaListReq = { pageNo, pageSize };
-            if (districtId) params.districtId = districtId;
-            if (theaterId) params.theaterId = theaterId;
+            if (districtID) params.districtID = districtID;
+            if (theaterID) params.theaterID = theaterID;
 
             const result = await run(params);
 
@@ -65,7 +65,7 @@ const CinemaTab = () => {
             setHasMore(totalLoaded < total);
         };
         fetchData();
-    }, [pageNo, districtId, theaterId]);
+    }, [pageNo, districtID, theaterID]);
 
 
     if (err) {
@@ -76,7 +76,7 @@ const CinemaTab = () => {
         <div className={styles.cinemaCardListWrapper}>
             <div className={styles.cinemaFilterWrapper}>
                 <CinemaFilters
-                currentFilter={{district: districtId,theater:theaterId}}
+                currentFilter={{district: districtID,theater:theaterID}}
                     change={(field: "district" | "theater", value: number | null) =>
                         handleQuery(field, value)
                     }

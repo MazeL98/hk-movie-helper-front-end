@@ -15,9 +15,9 @@ import { FilmCardItem } from "@/types/film";
 import dayjs from "dayjs";
 interface FilmCardData extends FilmCardItem {
     attrs?: {
-        attrs_key: string;
-        attrs_value: string | number | null;
-        attrs_icon?: React.ReactNode;
+        attrsKey: string;
+        attrsValue: string | number | null;
+        attrsIcon?: React.ReactNode;
     }[];
 }
 interface FilmCardProps {
@@ -30,7 +30,7 @@ const ListCard = ({ data }: FilmCardProps) => {
   const loading = useLoading();
 
     const toDetail = () => {
-        const queries: any = { filmId: data.id };
+        const queries: any = { filmID: data.id };
         if (currentDateRange && currentDateRange.length) {
             queries.startDate = currentDateRange[0];
             queries.endDate = currentDateRange[1];
@@ -43,34 +43,34 @@ const ListCard = ({ data }: FilmCardProps) => {
     };
     data.attrs = [
         {
-            attrs_key: "导演",
-            attrs_value: data.director_en.length
-                ? data.director_en
+            attrsKey: "导演",
+            attrsValue: data.directorEN.length
+                ? data.directorEN
                 : "暂无导演",
-            attrs_icon: <DirectorOutlined className={styles.attrIcon} />,
+            attrsIcon: <DirectorOutlined className={styles.attrIcon} />,
         },
         {
-            attrs_key: "豆瓣评分",
-            attrs_value:
-                Number(data.rating_douban) === 0
+            attrsKey: "豆瓣评分",
+            attrsValue:
+                Number(data.ratingDouban) === 0
                     ? "暂无评分"
-                    : data.rating_douban,
-            attrs_icon: <DouBanFilled className={styles.attrIcon} />,
+                    : data.ratingDouban,
+            attrsIcon: <DouBanFilled className={styles.attrIcon} />,
         },
     ];
     const { lang } = useLang();
     const getCardTitle = () => {
         const obj = {
-            en: data.name_en,
-            hk: data.name_hk,
-            simplified: data.name_simplified,
+            EN: data.nameEN,
+            HK: data.nameHK,
+            Simplified: data.nameSimplified,
         };
-        return obj[lang] ?? obj.hk;
+        return obj[lang] ?? obj.HK;
     };
 
     const getPoster = () => {
-        if (data.poster_url_internal) {
-            return data.poster_url_internal;
+        if (data.posterUrlInternal) {
+            return data.posterUrlInternal;
         }
         return defaultMoviePoster;
     };
@@ -83,9 +83,9 @@ const ListCard = ({ data }: FilmCardProps) => {
                 <div className={styles.cardTitle}>{getCardTitle()}</div>
                 <div className={styles.attrsGroup}>
                     {data.attrs.map((attr: any, index: number) => (
-                        <div className={styles.label} key={attr.attrs_key}>
-                            {attr.attrs_icon}
-                            {attr.attrs_value}
+                        <div className={styles.label} key={attr.attrsKey}>
+                            {attr.attrsIcon}
+                            {attr.attrsValue}
                         </div>
                     ))}
                 </div>

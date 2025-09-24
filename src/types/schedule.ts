@@ -1,10 +1,10 @@
 export interface ScheduleItem {
     id: number | string;
-  film_source_id:number;
+  filmSourceID:number;
   source:number;
-  film_id?:number;
-  cinema_id?:number;
-  cinema_name:string;
+  filmID?:number;
+  cinemaID?:number;
+  cinemaName:string;
   date:string;
   time:string;
   house:string;

@@ -20,9 +20,9 @@ import dayjs from "dayjs";
 
 interface FilmCardData extends FilmCardItem {
     attrs?: {
-        attrs_key: string;
-        attrs_value: string | number | null | ReactElement;
-        attrs_icon?: React.ReactNode;
+        attrsKey: string;
+        attrsValue: string | number | null | ReactElement;
+        attrsIcon?: React.ReactNode;
     }[];
 }
 
@@ -42,15 +42,15 @@ const GridCard = ({ data }: FilmCardProps) => {
 
     const getCardTitle = () => {
       const keyWithLang =  getLangKey(lang,'name') as keyof FilmCardItem
-        return data[keyWithLang] as string ?? data.name_hk;
+        return data[keyWithLang] as string ?? data.nameHK;
     };
 console.log('Title',getCardTitle())
     const getDirector = () =>{
-      return data[getLangKey(lang,'director') as keyof FilmCardItem] ?? data.director_hk
+      return data[getLangKey(lang,'director') as keyof FilmCardItem] ?? data.directorHK
     }
 
     const toDetail = () => {
-        const queries: any = { filmId: data.id };
+        const queries: any = { filmID: data.id };
         if (currentDateRange && currentDateRange.length) {
             queries.startDate = currentDateRange[0];
             queries.endDate = currentDateRange[1];
@@ -64,20 +64,20 @@ console.log('Title',getCardTitle())
 
     data.attrs = [
         {
-            attrs_key: "导演",
-            attrs_value: getDirector() ?? "--",
-            attrs_icon: <DirectorOutlined className={styles.attrIcon} />,
+            attrsKey: "导演",
+            attrsValue: getDirector() ?? "--",
+            attrsIcon: <DirectorOutlined className={styles.attrIcon} />,
         },
         {
-            attrs_key: "豆瓣评分",
-            attrs_value: <Rate disabled value={Number(data.rating_douban) / 10 * 5 } />
+            attrsKey: "豆瓣评分",
+            attrsValue: <Rate disabled value={Number(data.ratingDouban) / 10 * 5 } />
                ,
-            attrs_icon: <DouBanFilled className={styles.attrIcon} />,
+            attrsIcon: <DouBanFilled className={styles.attrIcon} />,
         },
     ];
     const getPoster = () => {
-        if (data.poster_url_internal) {
-            return data.poster_url_internal;
+        if (data.posterUrlInternal) {
+            return data.posterUrlInternal;
         }
         return defaultMoviePoster;
     };
@@ -89,9 +89,9 @@ console.log('Title',getCardTitle())
                 <div className={`${styles.cardTitle} ${getCardTitle().length > 9 ? styles.titleSmall : ''}`}>{getCardTitle()}</div>
                 <div className={styles.attrsGroup}>
                     {data.attrs.map((attr: any, _) => (
-                        <div className={styles.label} key={attr.attrs_key}>
-                            {attr.attrs_icon}
-                            {attr.attrs_value}
+                        <div className={styles.label} key={attr.attrsKey}>
+                            {attr.attrsIcon}
+                            {attr.attrsValue}
                         </div>
                     ))}
                 </div>

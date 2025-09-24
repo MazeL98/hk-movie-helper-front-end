@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
- type Lang = 'en' | 'simplified' | 'hk';
+ type Lang = 'EN' | 'Simplified' | 'HK';
 
 export const getPropertyByLang = (propName:string,lang:Lang) =>{
 
@@ -11,12 +11,12 @@ const LangContext = createContext<{
   lang: Lang;
   setLang: (lang: Lang) => void;
 }>({
-  lang: 'hk',
+  lang: 'HK',
   setLang: () => {},
 });
 
 export const LangProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [lang, setLang] = useState<Lang>('hk');
+  const [lang, setLang] = useState<Lang>('HK');
   return (
     <LangContext.Provider value={{ lang, setLang }}>
       {children}

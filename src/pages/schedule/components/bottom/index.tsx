@@ -16,7 +16,7 @@ const Bottom = ({schedules} : ScheduleListProps) => {
       {
         schedules.map( item => (
          <div className={styles.firstLevelItem} key={item.id}>
-           <div className={styles.firstLevelHeader}>{item.name_hk}</div>
+           <div className={styles.firstLevelHeader}>{item.nameHK}</div>
            {item.schedules.map(schedule => (
             <div className={styles.secondLevelItem} key={schedule.id}>
               <div className={styles.secondLevelLeft}>

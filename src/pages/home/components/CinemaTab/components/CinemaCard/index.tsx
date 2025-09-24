@@ -30,10 +30,10 @@ const CinemaCard = ({ data }: CinemaCardProps) => {
               <CinemaFilled className={styles.defaultCinemaLogo} />
             </div>
             <div className={styles.cardBody}>
-                <div className={styles.cardTitle}>{data.name_hk}</div>
+                <div className={styles.cardTitle}>{data.nameHK}</div>
                 <div className={styles.cardSubtitle}>
                     <AddressOutlined className={styles.addressIcon} />
-                    {data.address_hk}
+                    {data.addressHK}
                 </div>
             </div>
             <div className={styles.showSchedule} >

@@ -18,8 +18,8 @@ const filmFields: FieldItem[] = [
     { label: "时长", key: "duration" },
     { label: "类型", key: "genres" },
     { label: "语言", key: "language" },
-    { label: "豆瓣评分", key: "rating_douban" },
-    { label: "IMDB评分", key: "rating_imdb" },
+    { label: "豆瓣评分", key: "ratingDouban" },
+    { label: "IMDB评分", key: "ratingImdb" },
 ];
 
 const cinemaFields: FieldItem[] = [{label: "地址",baseKey: 'address'}]
@@ -43,8 +43,8 @@ const Top = ({info,type}:ScheduleTopProps) => {
     }
 
         const getPoster = () =>{
-      if('poster_url_internal' in info && info.poster_url_internal) {
-        return info.poster_url_internal
+      if('posterUrlInternal' in info && info.posterUrlInternal) {
+        return info.posterUrlInternal
       }
       return defaultMoviePoster
     }
@@ -55,12 +55,12 @@ const Top = ({info,type}:ScheduleTopProps) => {
                 src={getPoster()}
             ></Image>
             <div className={styles.topRight}>
-                <div className={styles.title}>{info[`name_${lang}`]}</div>
+                <div className={styles.title}>{info[`name${lang}`]}</div>
                 <div className={styles.propertyWrapper}>
                     {getFields().map(({ label, key, baseKey, render }) => {
                         let fullkey;
                         if (baseKey) {
-                            fullkey = `${baseKey}_${lang}` as keyof (FilmItem | CinemaItem);
+                            fullkey = `${baseKey}${lang}` as keyof (FilmItem | CinemaItem);
                         } else {
                             fullkey = key as keyof (FilmItem | CinemaItem);
                         }
