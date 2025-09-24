@@ -12,7 +12,7 @@ import { useLang } from "@/contexts/LanguageContext";
 import { useLoading } from "@/contexts/LoadingContext";
 import { DateRangeContext } from "../../../DateTab/index";
 import { FilmCardItem } from "@/types/film";
-
+import dayjs from "dayjs";
 interface FilmCardData extends FilmCardItem {
     attrs?: {
         attrs_key: string;
@@ -23,6 +23,7 @@ interface FilmCardData extends FilmCardItem {
 interface FilmCardProps {
     data: FilmCardData;
 }
+
 const ListCard = ({ data }: FilmCardProps) => {
     const navigate = useNavigate();
     const currentDateRange = useContext(DateRangeContext);
@@ -33,7 +34,9 @@ const ListCard = ({ data }: FilmCardProps) => {
         if (currentDateRange && currentDateRange.length) {
             queries.startDate = currentDateRange[0];
             queries.endDate = currentDateRange[1];
-        }
+        }else {
+                  queries.startDate = dayjs().format('YYYY-MM-DD')
+                }
         navigate("/schedule/", {
             state: queries,
         });
@@ -72,7 +75,7 @@ const ListCard = ({ data }: FilmCardProps) => {
         return defaultMoviePoster;
     };
     return (
-            loading ?  <Skeleton.Input active style={{height: 120,width:'100%',margin:'8px 0' }}  />:
+            // loading ?  <Skeleton.Input active style={{height: 120,width:'100%',margin:'8px 0' }}  />:
 
         <Card  className={styles.filmCardItem} bordered={false}>
             <Image src={getPoster()} preview={false} className={styles.poster}></Image>

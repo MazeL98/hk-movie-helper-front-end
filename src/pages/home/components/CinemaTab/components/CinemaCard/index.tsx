@@ -1,5 +1,6 @@
 import { Card } from "antd";
 import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
 import {
     ShowScheduleOutlined,
     AddressOutlined,
@@ -19,6 +20,7 @@ const CinemaCard = ({ data }: CinemaCardProps) => {
         navigate("/schedule/", {
             state: {
                 cinemaId: data.id,
+                startDate:dayjs().format('YYYY-MM-DD')
             },
         });
     };

@@ -1,0 +1,57 @@
+.my-modal-header {
+    text-align: center;
+    padding-bottom: 24px !important;
+
+    :global {
+        .ant-modal-title {
+            font-weight: 500;
+        }
+    }
+}
+
+.my-modal-body {
+    padding: 0 8px !important;
+}
+
+.my-form {
+    :global {
+
+        .ant-input-filled {
+            &:focus {
+                border: 1px solid $background-color !important;
+            }
+
+            &:active {
+                border: 1px solid $background-color;
+            }
+
+            &:focus-within {
+                border: 1px solid $background-color;
+            }
+        }
+
+        .ant-form-item-explain{
+          font-size: 12px;
+          line-height: 1.2;
+        }
+    }
+}
+
+.prefix-icon {
+    width: 14px;
+    height: 14px;
+    fill: $text-color-secondary;
+    margin-right: 4px;
+}
+
+.switch-button {
+    height: auto;
+    padding: 0 2px;
+    color: $highlight-color;
+    font-size: 12px;
+
+    &:hover {
+        color: $highlight-color !important;
+        filter: grayscale(0.85);
+    }
+}

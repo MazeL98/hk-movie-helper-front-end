@@ -5,6 +5,8 @@ $card-width: 180px;
 .film-card-item {
     width: 100%;
     margin-bottom: 16px;
+    animation: fade-in 0.4s ease forwards;
+    
     :global(.ant-card-body) {
         display: flex;
         position: relative;
@@ -73,3 +75,15 @@ $card-width: 180px;
 
     }
 }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+ 

@@ -18,18 +18,20 @@ export default function useRequest<D, P extends any[]>(
 
     const run = useCallback(async (...params: P) => {
         setLoading(true);
+        setErr(undefined);
         let res;
         try {
             res = await requestFn(...params);
               setResultData(res);
-
+            setErr(undefined);
+            return res as D;
         } catch (error: any) {
             setErr(error.message);
+            setResultData(undefined)
+        }finally {
+                  setLoading(false);
         }
-
-        setLoading(false);
-        return res as D;
-    }, []);
+    }, [requestFn]);
 
     return {loading, resultData, err, run};
 }

@@ -13,13 +13,12 @@ import {
     ScheduleListRes,
     ScheduleListReq,
     getValidDates,
-    ValidDatesReq
+    ValidDatesReq,
 } from "@/api/modules/schedule";
 // import { isValidDateFormat } from "@/utils/common";
 
-
 const Schedule = () => {
-    const [currentDate, setCurrentDate] = useState<string>('')
+    const [currentDate, setCurrentDate] = useState<string>("");
     const [info, setInfo] = useState<FilmItem | CinemaItem>();
     const [schedules, setSchedules] = useState<any>();
     const [dateList, setDateList] = useState<string[]>([]);
@@ -29,36 +28,35 @@ const Schedule = () => {
     const { filmId, cinemaId, startDate, endDate } = location.state;
 
     // 请求有效日期
-    const {run: runValidDatesFetch} = useRequest<string[],[ValidDatesReq]>(getValidDates)
-    useEffect(() =>{
-      const fetchData = async() =>{
-                    if (!filmId && !cinemaId) return;
+    const { run: runValidDatesFetch } = useRequest<string[], [ValidDatesReq]>(
+        getValidDates
+    );
+    useEffect(() => {
+        const fetchData = async () => {
+            if (!filmId && !cinemaId) return;
             let options: ValidDatesReq = {};
             if (filmId) {
                 options.filmId = filmId;
-                if(startDate && endDate) {
-                  options.startDate = startDate
-                  options.endDate= endDate
-                } 
+                if (startDate) options.startDate = startDate;
+                if (endDate) options.endDate = endDate;
             } else if (cinemaId) {
                 options.cinemaId = cinemaId;
             }
-        const result = await runValidDatesFetch(options)
-        setDateList(result)
-        setCurrentDate(result[0])
-      }
-      fetchData()
-    },[filmId,cinemaId,startDate,endDate])
+            const result = await runValidDatesFetch(options);
+            setDateList(result as string[]);
+            setCurrentDate((result as string[])[0]);
+        };
+        fetchData();
+    }, [filmId, cinemaId, startDate, endDate]);
 
     // 请求排片列表
-    const {  run:runScheduleListFetch } = useRequest<
-        ScheduleListRes,
-        [any]
-    >(getScheduleList);
+    const { run: runScheduleListFetch } = useRequest<ScheduleListRes, [any]>(
+        getScheduleList
+    );
 
     useEffect(() => {
         const fetchData = async () => {
-            if ((!filmId && !cinemaId) || (!currentDate)) return;
+            if ((!filmId && !cinemaId) || !currentDate) return;
             let options: ScheduleListReq = {
                 date: currentDate,
             };
@@ -73,11 +71,11 @@ const Schedule = () => {
             if ("scheduleByCinema" in result) {
                 const { scheduleByCinema, ...rest } = result;
                 setInfo(rest);
-                setSchedules(scheduleByCinema)
+                setSchedules(scheduleByCinema);
             } else if ("scheduleByFilm" in result) {
                 const { scheduleByFilm, ...rest } = result;
                 setInfo(rest);
-                setSchedules(scheduleByFilm)
+                setSchedules(scheduleByFilm);
             }
 
             console.log("排片结果", result);
@@ -92,9 +90,13 @@ const Schedule = () => {
 
     return (
         <div className={styles.scheduleContainer}>
-        
-            <Top info={info} type={filmId ? 'film' : 'cinema'} />
-            {startDate && endDate ? <div className={styles.dateTip}>正在查询{dayjs(startDate).format('MM-DD')} - {dayjs(endDate).format('MM-DD')} 的排片结果</div> : null}
+            <Top info={info} type={filmId ? "film" : "cinema"} />
+            {startDate && endDate ? (
+                <div className={styles.dateTip}>
+                    正在查询{dayjs(startDate).format("MM-DD")} -{" "}
+                    {dayjs(endDate).format("MM-DD")} 的排片结果
+                </div>
+            ) : null}
             <DateScrollPicker
                 value={currentDate}
                 dates={dateList}

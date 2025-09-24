@@ -1,0 +1,158 @@
+$header-height: 64px;
+
+.top-container {
+    position: relative;
+    height: 20%;
+    min-height: 120px;
+    width: 100%;
+    display: flex;
+    background-color: $highlight-color;
+    border-radius: 12px 12px 0 0;
+    margin-top: 1%;
+}
+
+.top-title {
+    position: absolute;
+    bottom: 12px;
+    left: 24px;
+    width: calc(100% - 48px);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+.month {
+    font-size: 48px;
+    margin-right: 4px;
+    line-height: 1.2;
+}
+
+.header-icon-container {
+    width: 88px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-icon {
+    width: 20px;
+    height: 20px;
+    color: $text-color-secondary;
+}
+
+.my-calendar {
+    margin-top: 24px;
+    :global(.rbc-time-view) {
+        border: none;
+    }
+    :global(.rbc-time-header) {
+        height: $header-height;
+        margin-bottom: 18px;
+    }
+
+    :global(.rbc-time-header.rbc-overflowing) {
+        border-right: 0;
+    }
+    :global(.rbc-allday-cell) {
+        display: none;
+    }
+
+    :global(.rbc-time-header-content) {
+        border-left: none;
+    }
+
+    :global(.rbc-header) {
+        border-bottom: none;
+        button {
+            width: 100%;
+            cursor: default;
+        }
+    }
+
+    :global(.rbc-time-content) {
+        border-top: none;
+    }
+
+    :global(.rbc-today) {
+        background: none;
+    }
+
+    :global(.rbc-header + .rbc-header) {
+        border-left: none;
+    }
+
+    :global(.rbc-header.rbc-today) {
+        .week-header {
+            background-color: $highlight-color;
+        }
+    }
+
+    :global(.rbc-time-content > * + * > *) {
+        border-left: none;
+    }
+
+    :global(.rbc-timeslot-group) {
+        border-bottom: none;
+    }
+
+    :global(.rbc-day-slot .rbc-time-slot) {
+        border-top: none;
+    }
+
+    :global(.rbc-event) {
+        &:nth-child(odd) {
+            color: $text-color-default;
+            border: none;
+            background-color: $highlight-color;
+        }
+        &:nth-child(even) {
+            color: $text-color-default;
+            border: none;
+            background-color: $background-color;
+        }
+
+    }
+}
+
+.toolbar {
+    flex: 1;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    :global(.ant-btn) {
+        font-size: 16px;
+        font-weight: 500;
+        color: $text-color-default;
+        .tool-icon {
+            width: 20px;
+            height: 20px;
+            fill: $text-color-default;
+            transition: fill 0.2s ease;
+        }
+
+        &:hover {
+            color: $text-color-secondary !important;
+            .tool-icon {
+                fill: $text-color-secondary;
+            }
+        }
+    }
+}
+
+.week-header {
+    height: $header-height;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: $background-color;
+}

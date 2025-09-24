@@ -9,7 +9,7 @@ const ServerError = () => {
   return (
     <Result status={500} icon={<Image src={ServerErrorImage} preview={false} height={200} />} title="500" subTitle="服务器出错，请稍后刷新重试" extra={[
       <Button type="primary" key="console" onClick={backToHome}>
-        Back To Home
+        回到首页
       </Button>,
     ]} ></Result>
   )

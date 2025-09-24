@@ -3,23 +3,61 @@ $button-text-color: #ffffff;
 $card-width: 180px;
 
 .film-card-item {
+    width: $card-width;
     display: flex;
     flex-direction: column;
-    width: $card-width;
+    animation: fade-in 0.4s ease forwards;
+    &:hover {
+        .card-body {
+            margin-top: -82px;
+            .show-more-button {
+                display: block;
+            }
+        }
+    }
+
+    :global {
+        .ant-image {
+            position: relative;
+            height: 254px;
+            z-index: 1;
+        }
+    }
+
+    :global {
+        .ant-rate {
+            font-size: 12px;
+        }
+
+        .ant-rate .ant-rate-star:not(:last-child) {
+            margin-inline-end: 1px;
+        }
+    }
 
     .card-body {
-        padding: 8px 8px;
+        position: relative;
+        margin-top: -44px;
+        padding: 12px ;
+        background-color: #ffffff;
+        box-shadow: 0 -0.5px 2px rgba(0, 0, 0, 0.05);
+        border-radius: 16px 16px 8px 8px;
+        z-index: 2;
 
         .card-title {
             font-size: 16px;
             font-weight: 500;
-            line-height: 1.3;
-            margin-bottom: 6px;
-            word-break: normal;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            word-break: all;
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: wrap;
+            white-space: nowrap;
         }
+
+        .title-small {
+            font-size: 14px;
+        }
+
         .card-subtitle {
             font-size: 14px;
             color: $text-color-secondary;
@@ -30,62 +68,57 @@ $card-width: 180px;
         }
 
         .attrs-group {
-            font-size: 13px;
-            line-height: 1.3;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .label {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .show-more-button {
+            width: 100%;
+            height: 28px;
+            font-size: 12px;
+            border: none;
+            margin-top: 8px;
+            background-color: $highlight-color;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+            display: none;
+
+
+            &:hover {
+                background-color: var(--ant-color-fill-tertiary);
+            }
+        }
+
+        .button-icon {
+            width: 13px;
+            height: 13px;
+            margin-top: 2px;
+        }
+
+        .visible {
+            display: inline-block;
         }
     }
 
     .attr-icon {
         width: 13px;
         height: 13px;
-        margin-right: 3px;
+        margin-right: 5px;
     }
+}
 
-    .imdb-icon {
-              width: 18px;
-        height: 12px;
-        margin-right: 3px;
-      vertical-align: middle;
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
     }
-
-    .show-schedule-wrapper {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        display: flex;
-        flex-direction: column;
-        justify-items: center;
-        align-items: center;
-        gap: 12px;
-       background-color: rgba(#f7f7ea,0.3);
-        visibility: hidden;
-    }
-
-    .show-schedule {
-        position: absolute;
-        left: 50%;
-        top: 45%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-
-        span {
-          font-size: 12px;
-        }
-    }
-    .show-schedule-icon {
-        width: 32px;
-        height: 32px;
-        fill: $text-color-default;
-    }
-
-    & :hover {
-        .show-schedule-wrapper {
-            visibility: visible;
-        }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

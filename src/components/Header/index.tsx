@@ -1,7 +1,12 @@
-import { Button, Card, Image } from "antd";
+import { Button, Card, Image, } from "antd";
 import { HomeOutlined, CalenderOutlined } from "../ExtraIcons";
 import { useLocation, useNavigate } from "react-router-dom";
-import  styles from "./Header.module.scss";
+
+import UserDropdown from "./components/UserDropdown";
+
+import styles from "./Header.module.scss";
+
+
 const Header = () => {
     const location = useLocation();
     const navigate = useNavigate();
@@ -12,10 +17,13 @@ const Header = () => {
         },
         {
             path: "/calendar",
-            icon: <CalenderOutlined style={{transform: 'scale(1.1)',marginTop: 3}} />,
+            icon: (
+                <CalenderOutlined
+                    style={{ transform: "scale(1.1)", marginTop: 3 }}
+                />
+            ),
         },
     ];
-
 
     return (
         <Card className={styles.mHeader}>
@@ -23,7 +31,6 @@ const Header = () => {
                 <div className={styles.headerLeft}>
                     <Image>Logo</Image>
                     <div className={styles.title}>HK-Movie-Helper</div>
-
                 </div>
                 <div className={styles.headerRight}>
                     <div className={styles.rightMenu}>
@@ -39,10 +46,12 @@ const Header = () => {
                                     navigate(menu.path);
                                 }}
                             >
-                              {menu.icon}
+                                {menu.icon}
                             </Button>
                         ))}
                     </div>
+                    <span className={styles.splitter}></span>
+                    <UserDropdown />
                 </div>
             </div>
         </Card>
