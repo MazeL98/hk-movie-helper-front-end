@@ -1,5 +1,5 @@
 export interface ScheduleItem {
-    id: number | string;
+    id: bigint;
   filmSourceID:number;
   source:number;
   filmID?:number;

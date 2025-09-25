@@ -1,4 +1,4 @@
-import { useState, useMemo, ReactNode } from "react";
+import { useState, useMemo,useEffect  } from "react";
 import { Button } from "antd";
 import {
     ArrowLeftOutlined,
@@ -18,7 +18,12 @@ import dayjs from "dayjs";
 import styles from "./Calendar.module.scss";
 
 import Forbidden from "@/components/StatusPages/Forbidden";
+
 import { events } from "node_modules/react-horizontal-scrolling-menu/dist/types/constants";
+import useRequest from "@/utils/useRequest";
+import { useUser } from "@/contexts/UserContext";
+import {getUserEvent,UserEventParams} from "@/api/modules/event";
+import { EventItem } from "@/types/event";
 
 const getEvents = () => {
     return [
@@ -43,6 +48,7 @@ const getEvents = () => {
 // const CustomTimeGutter: React.ComponentType<any> = ({ children }) => {
 //     return <div style={{ background: "#eee",width:'120px' }}>{children}</div>;
 // };
+
 const CustomTimeHeader: React.ComponentType = () => (
     <div className={styles.headerIconContainer}>
         <CalenderOutlined className={styles.headerIcon} />
@@ -98,6 +104,24 @@ const FilmCalendar = () => {
     // const endOfWeek = localizer.format(localizer.endOf(date,'week',1),'D')
     // const firstVisibleDay = localizer.firstVisibleDay(date,localizer)
 
+    // 请求日程列表
+    const {user} = useUser()
+
+        const { run: runGetUserEvent } = useRequest<EventItem[], [UserEventParams]>(
+            getUserEvent
+        );
+
+        // useEffect(() => {
+        //   const fetchData = async() =>{
+        //     if(!user || !user.id) return;
+        //     await runGetUserEvent({
+        //       userID: user?.id,
+
+        //     })
+        //   }
+
+        //   fetchData()
+        // })
     const formats: Formats = useMemo(
         () => ({
             timeGutterFormat: (date, culture, localizer) => {

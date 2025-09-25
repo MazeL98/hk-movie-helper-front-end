@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import {message} from "antd"
 import useRequest from "@/utils/useRequest";
 import Top from "./components/top";
 import DateScrollPicker from "./components/date-scroll-picker";
@@ -15,7 +16,9 @@ import {
     getValidDates,
     ValidDatesReq,
 } from "@/api/modules/schedule";
-// import { isValidDateFormat } from "@/utils/common";
+import {addUserEvent} from "@/api/modules/event";
+
+import { useUser } from "@/contexts/UserContext";
 
 const Schedule = () => {
     const [currentDate, setCurrentDate] = useState<string>("");
@@ -88,6 +91,23 @@ const Schedule = () => {
         setCurrentDate(() => date.format("YYYY-MM-DD"));
     };
 
+    // 将排片添加到我的日程中
+    const {user} = useUser()
+        const { run: runAddUserEvent } = useRequest<any, [any]>(
+       addUserEvent
+    );
+    const onAddToEvent = async(scheduleID:bigint) =>{
+      // 将userID,scheduleID,传递给api
+      if(!user || !user.id) {
+        return message.error("请先登录")
+      }
+      const res = await  runAddUserEvent({
+          userID: user?.id,
+          scheduleID: scheduleID
+      })
+      if(res.id) message.success("添加成功")
+    }
+
     return (
         <div className={styles.scheduleContainer}>
             <Top info={info} type={filmID ? "film" : "cinema"} />
@@ -102,7 +122,7 @@ const Schedule = () => {
                 dates={dateList}
                 onChange={handleDateChange}
             />
-            <Bottom schedules={schedules} />
+            <Bottom schedules={schedules} onAdd={onAddToEvent} />
         </div>
     );
 };
