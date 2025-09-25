@@ -1,7 +1,7 @@
 import { Dropdown, MenuProps, Button } from "antd";
 import { FC, useState } from "react";
 import styles from "./LangSwitcher.module.scss";
-type Language = "en" | "simplified" | "hk";
+type Language = "EN" | "Simplified" | "HK";
 
 interface LangSwitcherProps {
     currentLang: Language;
@@ -14,9 +14,9 @@ interface LanguageItem {
 }
 
 const languageItems: LanguageItem[] = [
-    { key: "simplified", label: "简" },
-    { key: "en", label: "EN" },
-    { key: "hk", label: "繁" },
+    { key: "Simplified", label: "简" },
+    { key: "EN", label: "EN" },
+    { key: "HK", label: "繁" },
 ];
 
 const LangSwitch: FC<LangSwitcherProps> = ({ currentLang, onChange }) => {
